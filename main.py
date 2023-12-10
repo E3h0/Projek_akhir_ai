@@ -1,8 +1,8 @@
 import os
-from sudoku1 import Sudoku
+from sudoku import Sudoku
 from dfs_algorithm import DFS
 
-#Membaca file '.txt' dan mengembalikan list sebagai data dari file input
+# Membaca file '.txt' dan mengembalikan list sebagai data dari file input
 def read_data(filename): 
   data = []
   
@@ -13,7 +13,7 @@ def read_data(filename):
       return None
   return data
 
-#Panggil fungsi read_data dan buat objek sudoku baru. Kemudian jalankan algoritma DFS dan cetak sudoku yang sudah terselesaikan
+# Panggil fungsi read_data dan buat objek sudoku baru. Lalu jalankan fungsi DFS dan cetak sudoku yang ter-solve
 def main():
   filename = input("Please enter the number of the text file: ")
   filename += ".txt"
