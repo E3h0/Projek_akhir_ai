@@ -77,7 +77,7 @@ class Sudoku(Node):
       sudoku += "\n"
     return sudoku
 
-# Class Sudoku untuk papan yang berukuran 2x2
+# Class Sudoku untuk papan yang berukuran 4x4
 class Sudoku2(Node):
 
   def __init__(self, puzzle, rows=4, cols=4):
