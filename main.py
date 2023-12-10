@@ -1,31 +1,35 @@
-import os
-from sudoku import Sudoku
-from dfs_algorithm import DFS
+from sudoku import Sudoku, Sudoku2
+from dfs import DFS
 
 # Membaca file '.txt' dan mengembalikan list sebagai data dari file input
 def read_data(filename): 
   data = []
-  
+  total_digits = 0
+
   try:
-      with open(f"puzzles/{filename}", "r", encoding="utf-8") as f:
-          data = [[int(number) for number in line.strip().split() if number] for line in f.readlines()]
+    with open(f"puzzles/{filename}", "r", encoding="utf-8") as f:
+      for line in f.readlines():
+        numbers = [int(number) for number in line.strip().split() if number]
+        total_digits += len(numbers)
+        data.append(numbers)
   except FileNotFoundError:
-      return None
-  return data
+    return None, 0
+
+  return data, total_digits
 
 # Panggil fungsi read_data dan buat objek sudoku baru. Lalu jalankan fungsi DFS dan cetak sudoku yang ter-solve
 def main():
-  filename = input("Please enter the number of the text file: ")
-  filename += ".txt"
-  data = read_data(filename)
+  filename = input("Masukkan nama file: ") + ".txt"
+  data, total_digits = read_data(filename)
 
   if data is not None:
-    sudoku = Sudoku(data)
-    print("Depth First Search")
-    dfs = DFS(sudoku)
-    dfs.search()
+    if total_digits == 81:
+      sudoku = Sudoku(data)
+    elif total_digits == 16:
+      sudoku = Sudoku2(data)
+    print("\n// Sudoku Solver dengan DFS //\n")
+    DFS(sudoku).search()
   else:
-    print("This file does not exit. Please enter another file name")
+    print("File tidak ditemukan.")
 
-if __name__ == '__main__':
-  main()
+main()
