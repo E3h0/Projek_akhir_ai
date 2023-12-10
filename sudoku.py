@@ -39,7 +39,7 @@ class Sudoku(Node):
     return True
   
   # Mencari sel pertama yang belum ditentukan (bernilai 0) sebagai root tree dari permasalahan
-  def find_first_epty_slot(self):
+  def find_first_empty_slot(self):
 
     for row in range(self.cols):
       for col in range(self.rows):
@@ -49,7 +49,7 @@ class Sudoku(Node):
   # Memperluas node saat ini, meng-update papan Sudoku untuk setiap angka yang valid
   def extend_node(self):
 
-    row, col = self.find_first_epty_slot()
+    row, col = self.find_first_empty_slot()
     new_puzzles = []
     for number in range(1, 9+1):
       if self.check_row(row, number) and self.check_col(col, number) and self.check_square(row, col, number):
@@ -110,7 +110,7 @@ class Sudoku2(Node):
           return False
     return True
   
-  def find_first_epty_slot(self):
+  def find_first_empty_slot(self):
   
     for row in range(self.cols):
       for col in range(self.rows):
@@ -119,7 +119,7 @@ class Sudoku2(Node):
 
   def extend_node(self):
  
-    row, col = self.find_first_epty_slot()
+    row, col = self.find_first_empty_slot()
     new_puzzles = []
     for number in range(1, 4+1):
       if self.check_row(row, number) and self.check_col(col, number) and self.check_square(row, col, number):
