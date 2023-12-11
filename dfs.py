@@ -52,7 +52,7 @@ class DFS:
       self.number_of_steps += 1
       
       if self.frontier_is_empty():
-        print(f"No Solution Found after {self.number_of_steps} steps!")
+        print(f"Tidak ditemukan solusi setelah {self.number_of_steps} langkah")
         break
         
       selected_node = self.remove_from_frontier()
